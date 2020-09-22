@@ -1,24 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import FooterLogo from './components/footer/footer_logo';
+import FooterCopyr from './components/footer/footer_copyright';
+import FooterNav from './components/footer/footer_nav';
+import Subscribe from './components/subscribe/subscribe';
+import SideNav from './components/sidenav';
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-content-wrapper d-flex clearfix">
+
+      <SideNav />
+      {props.children}
+      <Subscribe />
+
+      <footer className="footer_area clearfix">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-12 col-lg-4">
+              <div className="single_widget_area">
+                <FooterLogo />
+                <FooterCopyr />
+              </div>
+            </div>
+            <div className="col-12 col-lg-8">
+              <div className="single_widget_area">
+                <div className="footer_menu">
+
+                {/*<FooterNav />*/}
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
