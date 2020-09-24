@@ -28,9 +28,7 @@ export default (
             <Route exact path={ URL.VIEW_ONE } component={ ProductInfo } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
 
             {/*<Route exact path={ URL.MOVIES } component={ MovieListPage } />*/}
-
             {/*<Route exact path={ URL.VIEW_ONE_MOVIE } component={ ViewOneMoviePage } />*/}
-
         </Switch>
     </Router>
 );

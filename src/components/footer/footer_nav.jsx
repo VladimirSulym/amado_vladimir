@@ -1,20 +1,12 @@
 import React from "react";
 import {NAV} from '../../router/url';
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
+import NavItem from "../navItem"
 
 
 function FooterNav (props){
 console.log(props.location.pathname);
 
-    function renderNavItem (item) {
-
-        return (
-            <li className={`nav-item ${props.location.pathname === item.url ? 'active' : ''}`} key={item.url}>
-                <Link className="nav-link" to={item.url}>{item.title}</Link>
-            </li>
-        )
-    }
     return (
         <nav className="navbar navbar-expand-lg justify-content-end">
             <button className="navbar-toggler" type="button" data-toggle="collapse"
@@ -23,7 +15,12 @@ console.log(props.location.pathname);
             <div className="collapse navbar-collapse" id="footerNavContent">
                 <ul className="navbar-nav ml-auto">
                     {
-                        NAV.map(renderNavItem)
+                        NAV.map((item) => (<NavItem
+                                url={item.url}
+                                title={item.title}
+                                active={window.location.pathname === item.url}
+                                key = {item.url}
+                            />))
                     }
                 </ul>
             </div>

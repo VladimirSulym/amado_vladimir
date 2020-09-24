@@ -1,18 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import FooterLogo from './components/footer/footer_logo';
 import FooterCopyr from './components/footer/footer_copyright';
 import FooterNav from './components/footer/footer_nav';
 import Subscribe from './components/subscribe/subscribe';
 import SideNav from './components/sidenav';
+import OneItem from './components/catalogElement/oneItem'
+import {fetchData} from './store/action_creatores'
 
 function App(props) {
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(fetchData());
+  }, [])
+
   return (
+      <>
     <div className="main-content-wrapper d-flex clearfix">
-
-      <SideNav />
+      {/*<SideNav />*/}
       {props.children}
+    </div>
       <Subscribe />
-
       <footer className="footer_area clearfix">
         <div className="container">
           <div className="row align-items-center">
@@ -34,7 +42,7 @@ function App(props) {
           </div>
         </div>
       </footer>
-    </div>
+      </>
   );
 }
 

@@ -1,6 +1,10 @@
 import React from "react";
+import {NAV} from "../router/url";
+import {withRouter} from "react-router";
+import NavItem from "./navItem";
 
-function SideNav () {
+function SideNav (props) {
+    console.log("PROPS ->", props);
 
     return (
         <header className="header-area clearfix">
@@ -12,11 +16,14 @@ function SideNav () {
             </div>
             <nav className="amado-nav">
                 <ul>
-                    <li className="active"><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="product-details.html">Product</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                    <li><a href="checkout.html">Checkout</a></li>
+                    {
+                        NAV.map((item) => (<NavItem
+                                url={item.url}
+                                title={item.title}
+                                active={window.location.pathname === item.url}
+                                key = {item.url}
+                            />))
+                    }
                 </ul>
             </nav>
             <div className="amado-btn-group mt-30 mb-100">
@@ -38,4 +45,4 @@ function SideNav () {
     )
 }
 
-export default React.memo(SideNav)
+export default withRouter(React.memo(SideNav));
